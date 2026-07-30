@@ -16,13 +16,14 @@ When the dataset is large and diverse, the model learns the underlying features 
 
 PyTorch
 
+
 No special function is required. Simply train the model using a larger dataset through the Dataset and DataLoader classes.
 
 Key Points
 Most effective way to reduce overfitting.
 Improves generalization.
 More data usually leads to better model performance.
-2. Reducing the Complexity of the Neural Network
+# 2. Reducing the Complexity of the Neural Network
 Definition
 
 Reducing the size or depth of a neural network by using fewer layers or fewer neurons.
@@ -50,7 +51,7 @@ Key Points
 Reduces overfitting.
 Makes training faster.
 Uses fewer parameters.
-3. Regularization (L2 Regularization / Weight Decay)
+# 3. Regularization (L2 Regularization / Weight Decay)
 Definition
 
 Regularization is a technique that adds a penalty to the loss function for large weight values, encouraging the model to keep weights small.
@@ -78,7 +79,7 @@ Prevents overfitting.
 Keeps weights small.
 Improves generalization.
 Implemented using weight_decay.
-4. Dropout
+# 4. Dropout
 Definition
 
 Dropout is a regularization technique in which a random set of neurons is temporarily deactivated during each training iteration.
@@ -98,7 +99,7 @@ Active only during training.
 Disabled during evaluation (model.eval()).
 Reduces overfitting.
 Encourages robust feature learning.
-5. Data Augmentation
+# 5. Data Augmentation
 Definition
 
 Data augmentation is the process of creating new training samples by applying transformations to existing data.
@@ -131,7 +132,7 @@ Key Points
 Increases effective dataset size.
 Reduces overfitting.
 Commonly used in image classification.
-6. Batch Normalization
+##6. Batch Normalization
 Definition
 
 Batch Normalization is a technique that normalizes the output of a layer for each mini-batch during training.
