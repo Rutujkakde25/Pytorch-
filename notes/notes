@@ -1,0 +1,263 @@
+# 🎯 Hyperparameters in Neural Networks
+
+Hyperparameters are the **configuration settings** of a neural network that are **chosen before training starts**. Unlike model parameters (weights and biases), hyperparameters are **not learned by the model**. They control how the model is built and how it learns.
+
+---
+
+## 📌 What are Hyperparameters?
+
+> **Definition:**  
+> Hyperparameters are user-defined values that determine the architecture of the neural network and the learning process. Choosing the right hyperparameters can significantly improve model performance.
+
+---
+
+# 1️⃣ Number of Hidden Layers
+
+### Definition
+The number of hidden layers between the input layer and the output layer.
+
+### Why is it Important?
+- Controls the depth of the neural network.
+- More layers allow the model to learn more complex patterns.
+
+### Effect
+
+| Fewer Layers | More Layers |
+|--------------|-------------|
+| Simpler model | More powerful model |
+| Faster training | Slower training |
+| May underfit | May overfit |
+
+### Example
+
+```python
+nn.Sequential(
+    nn.Linear(784,128),
+    nn.ReLU(),
+    nn.Linear(128,10)
+)
+```
+
+Hidden Layers = **1**
+
+---
+
+# 2️⃣ Neurons per Layer
+
+### Definition
+
+The number of neurons present inside each hidden layer.
+
+### Why is it Important?
+
+- Determines the learning capacity of the model.
+- More neurons allow the network to learn more features.
+
+### Effect
+
+| Fewer Neurons | More Neurons |
+|---------------|--------------|
+| Less computation | More computation |
+| May underfit | May overfit |
+
+### Example
+
+```python
+nn.Linear(784,256)
+```
+
+256 neurons.
+
+---
+
+# 3️⃣ Number of Epochs
+
+### Definition
+
+One complete pass through the entire training dataset.
+
+### Why is it Important?
+
+The model improves after every epoch.
+
+### Example
+
+```python
+epochs = 20
+
+for epoch in range(epochs):
+    ...
+```
+
+### Effect
+
+| Small Epochs | Large Epochs |
+|--------------|--------------|
+| Underfitting | Overfitting |
+
+---
+
+# 4️⃣ Optimizer
+
+### Definition
+
+The algorithm responsible for updating the weights and biases of the neural network.
+
+### Common Optimizers
+
+- SGD
+- Adam
+- RMSprop
+- AdamW
+
+### Example
+
+```python
+optimizer = torch.optim.SGD(
+    model.parameters(),
+    lr=0.01
+)
+```
+
+---
+
+# 5️⃣ Learning Rate
+
+### Definition
+
+Controls how much the weights change after every update.
+
+### Effect
+
+| Small LR | Large LR |
+|----------|----------|
+| Slow learning | Faster learning |
+| Stable | May overshoot |
+
+### Example
+
+```python
+optimizer = torch.optim.Adam(
+    model.parameters(),
+    lr=0.001
+)
+```
+
+---
+
+# 6️⃣ Batch Size
+
+### Definition
+
+The number of training samples processed before updating the weights.
+
+### Example
+
+```python
+train_loader = DataLoader(
+    train_dataset,
+    batch_size=32
+)
+```
+
+### Effect
+
+| Small Batch | Large Batch |
+|-------------|-------------|
+| Less memory | More memory |
+| Noisy gradients | Stable gradients |
+
+---
+
+# 7️⃣ Dropout Rate
+
+### Definition
+
+The percentage of neurons randomly turned off during training.
+
+### Purpose
+
+- Prevent Overfitting
+- Improve Generalization
+
+### Example
+
+```python
+nn.Dropout(0.5)
+```
+
+50% neurons are randomly disabled during training.
+
+---
+
+# 8️⃣ Weight Decay (L2 Regularization)
+
+### Definition
+
+Adds a penalty to large weights during training.
+
+### Purpose
+
+- Prevent overfitting
+- Keep weights small
+- Improve generalization
+
+### Example
+
+```python
+optimizer = torch.optim.Adam(
+    model.parameters(),
+    lr=0.001,
+    weight_decay=0.0001
+)
+```
+
+---
+
+# 📊 Summary Table
+
+| Hyperparameter | Controls | Common Values |
+|---------------|----------|---------------|
+| Hidden Layers | Network Depth | 1–10 |
+| Neurons | Model Capacity | 32–1024 |
+| Epochs | Number of Training Passes | 10–100 |
+| Optimizer | Weight Update Algorithm | SGD, Adam |
+| Learning Rate | Update Step Size | 0.1, 0.01, 0.001 |
+| Batch Size | Samples per Update | 16, 32, 64, 128 |
+| Dropout | Regularization | 0.2–0.5 |
+| Weight Decay | L2 Regularization | 1e-5 – 1e-3 |
+
+---
+
+# 💡 Interview Questions
+
+### Q1. What is a hyperparameter?
+
+Hyperparameters are user-defined settings chosen before training that control the architecture and learning process of a neural network.
+
+---
+
+### Q2. Is Learning Rate a parameter?
+
+❌ No.
+
+Learning Rate is a hyperparameter.
+
+---
+
+### Q3. What is the difference between Parameters and Hyperparameters?
+
+| Parameters | Hyperparameters |
+|------------|-----------------|
+| Learned automatically | Set manually |
+| Weights & Biases | Learning Rate, Batch Size, Epochs |
+| Updated during training | Fixed before training |
+
+---
+
+# ✅ Key Takeaways
+
+- Hyperparameters are **not learned** by the model.
+- Choosing good hyperparameters improves accuracy.
+- Poor hyperparameters may lead to underfitting or overfitting.
+- Hyperparameter tuning is an important step in Deep Learning.
